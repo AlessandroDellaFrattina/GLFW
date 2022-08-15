@@ -21,8 +21,32 @@ project "GLFW"
 		"src/input.c",
 		"src/monitor.c",
 		"src/vulkan.c",
-		"src/window.c"
+		"src/window.c",
+		"src/osmesa_context.c"
 	}
+
+	filter "system:windows"
+		systemversion "latest"
+		staticruntime "On"
+
+		files {
+
+			"src/win32_init.c",
+			"src/win32_joystick.c",
+			"src/win32_monitor.c",
+			"src/win32_module.c",
+			"src/win32_time.c",
+			"src/win32_thread.c",
+			"src/win32_window.c",
+			"src/wgl_context.c",
+			"src/egl_context.c"
+		}
+
+		defines {
+
+			"_GLFW_WIN32",
+			"_CRT_SECURE_NO_WARNINGS"
+		}
 
 	filter "system:linux"
 		pic "On"
@@ -40,7 +64,6 @@ project "GLFW"
 			"src/posix_thread.c",
 			"src/glx_context.c",
 			"src/egl_context.c",
-			"src/osmesa_context.c",
 			"src/linux_joystick.c"
 		}
 
@@ -49,28 +72,24 @@ project "GLFW"
 			"_GLFW_X11"
 		}
 
-	filter "system:windows"
+	filter "system:macosx"
+		pic "On"
+
 		systemversion "latest"
 		staticruntime "On"
 
 		files {
 
-			"src/win32_init.c",
-			"src/win32_joystick.c",
-			"src/win32_monitor.c",
-			"src/win32_module.c",
-			"src/win32_time.c",
-			"src/win32_thread.c",
-			"src/win32_window.c",
-			"src/wgl_context.c",
-			"src/egl_context.c",
-			"src/osmesa_context.c"
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_time.c",
+			"src/cocoa_window.m"
 		}
 
 		defines {
 
-			"_GLFW_WIN32",
-			"_CRT_SECURE_NO_WARNINGS"
+			"_GLFW_COCOA"
 		}
 
 	filter "configurations:Debug"
