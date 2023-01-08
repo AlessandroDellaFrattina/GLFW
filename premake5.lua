@@ -30,6 +30,12 @@ project "GLFW"
 
 		systemversion "latest"
 
+		defines {
+
+			"_GLFW_WIN32",
+			"_CRT_SECURE_NO_WARNINGS"
+		}
+
 		files {
 
 			"src/win32_init.c",
@@ -41,12 +47,6 @@ project "GLFW"
 			"src/win32_window.c",
 			"src/wgl_context.c",
 			"src/egl_context.c"
-		}
-
-		defines {
-
-			"_GLFW_WIN32",
-			"_CRT_SECURE_NO_WARNINGS"
 		}
 
 	filter "system:linux"
