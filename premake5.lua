@@ -1,6 +1,7 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -26,8 +27,8 @@ project "GLFW"
 	}
 
 	filter "system:windows"
+
 		systemversion "latest"
-		staticruntime "On"
 
 		files {
 
@@ -49,10 +50,10 @@ project "GLFW"
 		}
 
 	filter "system:linux"
+
 		pic "On"
 
-		systemversion "latest"
-		staticruntime "On"
+		defines "_GLFW_X11"
 
 		files {
 
@@ -67,16 +68,13 @@ project "GLFW"
 			"src/linux_joystick.c"
 		}
 
-		defines {
-
-			"_GLFW_X11"
-		}
-
 	filter "system:macosx"
+
 		pic "On"
 
-		systemversion "latest"
-		staticruntime "On"
+		systemversion "max"
+
+		defines "_GLFW_COCOA"
 
 		files {
 
@@ -87,15 +85,18 @@ project "GLFW"
 			"src/cocoa_window.m"
 		}
 
-		defines {
-
-			"_GLFW_COCOA"
-		}
-
 	filter "configurations:Debug"
+		defines "VULTURE_DEBUG"
 		runtime "Debug"
-		symbols "on"
+		symbols "On"
 
 	filter "configurations:Release"
+		defines "VULTURE_RELEASE"
+		runtime "Debug"
+		symbols "On"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "VULTURE_DIST"
 		runtime "Release"
-		optimize "on"
+		optimize "On"
