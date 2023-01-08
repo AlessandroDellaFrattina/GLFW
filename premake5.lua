@@ -3,8 +3,13 @@ project "GLFW"
 	language "C"
 	staticruntime "On"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
+
+	includedirs {
+
+		"include"
+	}
 
 	files {
 
@@ -75,6 +80,11 @@ project "GLFW"
 		systemversion "max"
 
 		defines "_GLFW_COCOA"
+
+		externalincludedirs {
+
+			"include"
+		}
 
 		files {
 
