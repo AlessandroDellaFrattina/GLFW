@@ -2,7 +2,6 @@ project "GLFW"
 	kind "StaticLib"
 	language "C"
 	staticruntime "On"
-
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -56,7 +55,7 @@ project "GLFW"
 	filter "system:linux"
 
 		pic "On"
-
+		systemversion "latest"
 		defines "_GLFW_X11"
 
 		files {
@@ -74,9 +73,7 @@ project "GLFW"
 	filter "system:macosx"
 
 		pic "On"
-
 		systemversion "max"
-
 		defines "_GLFW_COCOA"
 
 		externalincludedirs {
