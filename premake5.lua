@@ -58,6 +58,11 @@ project "GLFW"
 		systemversion "latest"
 		defines "_GLFW_X11"
 
+		externalincludedirs {
+
+			"include"
+		}
+
 		files {
 
 			"src/x11_init.c",
