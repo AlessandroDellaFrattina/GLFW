@@ -52,54 +52,6 @@ project "GLFW"
 			"src/wgl_context.c"
 		}
 
-	filter "system:linux"
-
-		pic "On"
-		systemversion "latest"
-		defines "_GLFW_X11"
-
-		externalincludedirs {
-
-			"include"
-		}
-
-		files {
-
-			"src/x11_init.c",
-			"src/x11_monitor.c",
-			"src/x11_window.c",
-			"src/xkb_unicode.c",
-			"src/posix_time.c",
-			"src/posix_module.c",
-			"src/posix_poll.c",
-			"src/posix_thread.c",
-			"src/glx_context.c",
-			"src/linux_joystick.c"
-		}
-
-	filter "system:macosx"
-
-		pic "On"
-		systemversion "max"
-		defines "_GLFW_COCOA"
-
-		externalincludedirs {
-
-			"include"
-		}
-
-		files {
-
-			"src/cocoa_init.m",
-			"src/cocoa_joystick.m",
-			"src/cocoa_monitor.m",
-			"src/cocoa_time.c",
-			"src/cocoa_window.m",
-			"src/posix_thread.c",
-			"src/posix_module.c",
-			"src/nsgl_context.m"
-		}
-
 	filter "configurations:Debug"
 		defines "VULTURE_DEBUG"
 		runtime "Debug"
