@@ -1,7 +1,7 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-	staticruntime "On"
+	staticruntime "on"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -53,17 +53,17 @@ project "GLFW"
 		}
 
 	filter "configurations:Debug"
-		defines "VULTURE_DEBUG"
+		defines "VE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
-		defines "VULTURE_RELEASE"
-		runtime "Debug"
-		symbols "On"
-		optimize "On"
+		defines "VE_RELEASE"
+		runtime "Release"
+		symbols "on"
+		optimize "on"
 
 	filter "configurations:Dist"
-		defines "VULTURE_DIST"
+		defines "VE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
