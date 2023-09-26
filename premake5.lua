@@ -1,7 +1,7 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-	staticruntime "on"
+	staticruntime "On"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -52,18 +52,42 @@ project "GLFW"
 			"src/wgl_context.c"
 		}
 
+	filter "system:linux"
+
+		systemversion "latest"
+		pic "On"
+
+		defines {
+
+			"_GLFW_X11"
+		}
+
+		files {
+
+			"src/x11_init.c",
+			"src/x11_monitor.c",
+			"src/x11_window.c",
+			"src/xkb_unicode.c",
+			"src/posix_time.c",
+			"src/posix_thread.c",
+			"src/posix_module.c",
+			"src/posix_poll.c",
+			"src/glx_context.c",
+			"src/linux_joystick.c"
+		}
+
 	filter "configurations:Debug"
 		defines "VE_DEBUG"
 		runtime "Debug"
-		symbols "on"
+		symbols "On"
 
 	filter "configurations:Release"
 		defines "VE_RELEASE"
 		runtime "Release"
-		symbols "on"
-		optimize "on"
+		symbols "On"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "VE_DIST"
 		runtime "Release"
-		optimize "on"
+		optimize "On"
