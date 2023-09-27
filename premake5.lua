@@ -76,6 +76,29 @@ project "GLFW"
 			"src/linux_joystick.c"
 		}
 
+	filter "system:macosx"
+
+		pic "On"
+		systemversion "max"
+		defines "_GLFW_COCOA"
+
+		externalincludedirs {
+
+			"include"
+		}
+
+		files {
+
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_time.c",
+			"src/cocoa_window.m",
+			"src/posix_thread.c",
+			"src/posix_module.c",
+			"src/nsgl_context.m"
+		}
+
 	filter "configurations:Debug"
 		defines "VE_DEBUG"
 		runtime "Debug"
