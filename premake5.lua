@@ -78,8 +78,8 @@ project "GLFW"
 
 	filter "system:macosx"
 
+		systemversion "12.0"
 		pic "On"
-		systemversion "max"
 		defines "_GLFW_COCOA"
 
 		externalincludedirs {
