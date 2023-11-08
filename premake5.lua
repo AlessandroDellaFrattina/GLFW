@@ -54,13 +54,7 @@ project "GLFW"
 
 	filter "system:linux"
 
-		systemversion "latest"
-		pic "On"
-
-		defines {
-
-			"_GLFW_X11"
-		}
+		defines "_GLFW_X11"
 
 		files {
 
@@ -78,8 +72,6 @@ project "GLFW"
 
 	filter "system:macosx"
 
-		systemversion "12.0"
-		pic "On"
 		defines "_GLFW_COCOA"
 
 		externalincludedirs {
