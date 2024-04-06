@@ -1,9 +1,9 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-	staticruntime "Off"
-	targetdir ("%{wks.location}/bin/" .. outputdir .. "/lib")
-	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/lib")
+	staticruntime (sruntime)
+	targetdir (bin)
+	objdir (binint)
 
 	includedirs {
 
@@ -31,7 +31,6 @@ project "GLFW"
 	}
 
 	filter "system:windows"
-
 		systemversion "latest"
 
 		defines {
@@ -53,7 +52,6 @@ project "GLFW"
 		}
 
 	filter "system:linux"
-
 		defines "_GLFW_X11"
 
 		files {
@@ -71,7 +69,6 @@ project "GLFW"
 		}
 
 	filter "system:macosx"
-
 		defines "_GLFW_COCOA"
 
 		externalincludedirs {
@@ -92,17 +89,16 @@ project "GLFW"
 		}
 
 	filter "configurations:Debug"
-		defines "VE_DEBUG"
-		runtime "Debug"
-		symbols "On"
+		runtime (debugruntime)
+		symbols (debugsymbols)
+		optimize (debugoptimize)
 
 	filter "configurations:Release"
-		defines "VE_RELEASE"
-		runtime "Release"
-		symbols "On"
-		optimize "On"
+		runtime (releaseruntime)
+		symbols (releasesymbols)
+		optimize (releaseoptimize)
 
 	filter "configurations:Dist"
-		defines "VE_DIST"
-		runtime "Release"
-		optimize "On"
+		runtime (distruntime)
+		symbols (distsymbols)
+		optimize (distoptimize)
